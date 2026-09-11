@@ -1,0 +1,2 @@
+<article> digunakan untuk membungkus keseluruhan berita karena isinya merupakan konten yang berdiri sendiri dan tetap memiliki makna jika dibaca terpisah. 
+<section> digunakan untuk membagi artikel menjadi beberapa bagian berdasarkan topik, seperti "Latar Belakang" dan "Rangkaian Kegiatan". <time> digunakan untuk menandai tanggal kegiatan agar dapat dikenali dengan format tanggal yang terstruktur melalui atribut datetime.
