@@ -1,0 +1,14 @@
+[
+ {
+    "judul": "Struktur",
+    "deskripsi": "HTML semantik dan mudah dipahami."
+ },
+ {
+    "judul": "Visual",
+    "deskripsi": "CSS responsif dan tetap terbaca."
+ },
+ {
+    "judul": "Interaksi",
+    "deskripsi": "JavaScript mengubah DOM melalui event."
+ }
+]
