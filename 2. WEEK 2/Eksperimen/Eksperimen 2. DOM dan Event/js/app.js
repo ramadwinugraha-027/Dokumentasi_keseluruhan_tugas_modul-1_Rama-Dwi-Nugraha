@@ -13,6 +13,7 @@ const tombolUbahJudul =
 
 const tombolToggleStatus =
      document.querySelector('#toggle-status');
+
 console.log({
     judulUtama,
     status,
@@ -23,8 +24,8 @@ console.log({
 });
 
 tombolUbahJudul.addEventListener('click', () => {
-    // judulUtama.textContent = 'DOM Berhasil Diubah';
-    // status.textContent = 'Teks heading berhasil diubah.';
+    judulUtama.textContent = 'DOM Berhasil Diubah';
+    status.textContent = 'Teks heading berhasil diubah.';
 });
 
 tombolToggleStatus.addEventListener('click', () => {

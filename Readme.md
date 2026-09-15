@@ -1,8 +1,9 @@
+````markdown
 # Mata Kuliah Proyek 3
 
-Repository ini berisi kumpulan tugas, latihan, dan mini project yang dikerjakan selama mengikuti Mata Kuliah Proyek 3 di Program Studi D3 Teknik Informatika.
+Repository ini berisi kumpulan tugas, latihan, eksperimen, dan mini project yang dikerjakan selama mengikuti Mata Kuliah Proyek 3 pada Program Studi D3 Teknik Informatika.
 
-## 📁 Struktur Repository
+## Struktur Repository
 
 ```text
 .
@@ -19,42 +20,83 @@ Repository ini berisi kumpulan tugas, latihan, dan mini project yang dikerjakan 
 │   ├── Eksperimen/
 │   │   ├── Eksperimen 1. Console dan Tipe Data/
 │   │   ├── Eksperimen 2. DOM dan Event/
-│   │   └── Eksperimen 3 Promise, fetch, dan State UI/
+│   │   └── Eksperimen 3. Promise, fetch, dan State UI/
+│   │
 │   ├── Independent Challenge/
 │   │   └── Independent Challenge 1. Kalkulator Harga/
+│   │
 │   └── Worksheet Mahasiswa Modul 2 - Vanilla JavaScript dan Interaktivitas Web.docx
 │
 └── README.md
+````
 
 ## Isi Repository
 
-### WEEK 1
+### Week 1
 
-Folder ini berisi tugas-tugas yang dikerjakan pada minggu pertama, yaitu:
+Folder Week 1 berisi tugas dan latihan yang dikerjakan pada minggu pertama pembelajaran.
 
-1. **Troubleshooting HTML**
-   Latihan memperbaiki kesalahan pada HTML.
+#### 1. Troubleshooting HTML
 
-2. **Independent Challenge Artikel Kegiatan Kampus**
-   Tugas mandiri membuat artikel tentang kegiatan kampus.
+Latihan untuk memahami dan memperbaiki berbagai kesalahan pada struktur HTML.
 
-3. **Independent Challenge Pricing Card**
-   Latihan membuat tampilan kartu harga menggunakan HTML dan CSS.
+#### 2. Independent Challenge Artikel Kegiatan Kampus
 
-4. **Tugas Praktikum**
-   Kumpulan tugas praktikum yang dikerjakan selama pembelajaran.
+Tugas mandiri untuk membuat artikel mengenai kegiatan kampus menggunakan HTML dan CSS.
 
-5. **Mini Project Modul 1**
-   Proyek mini sebagai penerapan materi yang telah dipelajari.
+#### 3. Independent Challenge Pricing Card
 
-6. **Evidence**
-   Kumpulan bukti pengerjaan tugas dan kegiatan pembelajaran.
+Latihan membuat tampilan pricing card dengan menerapkan HTML dan CSS.
 
-Selain folder tugas, terdapat juga file worksheet dalam format PDF.
+#### 4. Tugas Praktikum
 
-### WEEK 2
+Kumpulan tugas praktikum yang dikerjakan selama proses pembelajaran.
 
-Folder ini digunakan untuk menyimpan tugas dan materi pembelajaran pada minggu kedua. Isinya akan diperbarui sesuai dengan tugas yang diberikan.
+#### 5. Mini Project Modul 1
+
+Mini project sebagai penerapan materi yang telah dipelajari pada Modul 1.
+
+#### 6. Evidence
+
+Kumpulan bukti pengerjaan tugas dan aktivitas pembelajaran pada Week 1.
+
+### Week 2
+
+Folder Week 2 berisi eksperimen dan tugas yang berkaitan dengan materi Vanilla JavaScript dan interaktivitas web.
+
+#### Eksperimen 1. Console dan Tipe Data
+
+Eksperimen untuk memahami penggunaan Console dan tipe data dasar dalam JavaScript.
+
+#### Eksperimen 2. DOM dan Event
+
+Eksperimen mengenai Document Object Model (DOM), event, event handler, serta interaksi pengguna dengan halaman web.
+
+#### Eksperimen 3. Promise, Fetch, dan State UI
+
+Eksperimen mengenai Promise, `async/await`, Fetch API, pengambilan data JSON, serta pengelolaan state pada antarmuka pengguna.
+
+#### Independent Challenge 1. Kalkulator Harga
+
+Tugas mandiri untuk membuat kalkulator harga menggunakan HTML, CSS, dan JavaScript.
+
+## Materi yang Dipelajari
+
+Materi yang diterapkan dalam repository ini meliputi:
+
+* HTML
+* CSS
+* JavaScript
+* Console dan tipe data
+* DOM manipulation
+* Event dan event handler
+* Promise
+* `async/await`
+* Fetch API
+* JSON
+* State antarmuka pengguna
+* Debugging menggunakan browser DevTools
+* Git dan GitHub
 
 ## Teknologi yang Digunakan
 
@@ -62,16 +104,18 @@ Folder ini digunakan untuk menyimpan tugas dan materi pembelajaran pada minggu k
 * CSS
 * JavaScript
 * Visual Studio Code
-* Git dan GitHub
+* Git
+* GitHub
 
 ## Identitas Mahasiswa
 
-Nama: Rama Dwi Nugraha
+| Keterangan    | Data                  |
+| ------------- | --------------------- |
+| Nama          | Rama Dwi Nugraha      |
+| NIM           | 251511027             |
+| Kelas         | D3-2A                 |
+| Program Studi | D3 Teknik Informatika |
+| Mata Kuliah   | Proyek 3              |
 
-NIM: 251511027
+```
 
-Kelas: D3-2A
-
-Program Studi: D3 Teknik Informatika
-
-Mata Kuliah: Proyek 3

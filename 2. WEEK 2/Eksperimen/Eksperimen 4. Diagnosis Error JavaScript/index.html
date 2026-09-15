@@ -1,0 +1,38 @@
+<!doctype html> 
+<html lang="id"> 
+<head> 
+  <meta charset="utf-8"> 
+  <meta name="viewport" 
+        content="width=device-width, initial-scale=1"> 
+  <title>Eksperimen Diagnosis Error</title> 
+  <link rel="stylesheet" href="css/style.css"> 
+</head> 
+<body> 
+  <main class="container"> 
+    <section class="praktikum-card" 
+             aria-labelledby="judul-utama"> 
+      <p class="label">Eksperimen 3</p> 
+      <h1 id="judul-utama">Kalkulator Total</h1> 
+  
+      <form id="form-hitung"> 
+        <label for="harga">Harga</label> 
+        <input id="harga" name="harga" type="number" 
+               min="1" required> 
+  
+        <label for="jumlah">Jumlah</label> 
+        <input id="jumlah" name="jumlah" type="number" 
+               min="1" required> 
+  
+        <button id="hitung" type="submit">Hitung</button> 
+      </form> 
+  
+      <p>Total: Rp <output id="hasil">0</output></p> 
+      <p id="pesan" role="status" aria-live="polite"> 
+        Masukkan harga dan jumlah. 
+      </p> 
+    </section> 
+  </main> 
+  
+  <script src="js/app.js" defer></script> 
+</body> 
+</html> 

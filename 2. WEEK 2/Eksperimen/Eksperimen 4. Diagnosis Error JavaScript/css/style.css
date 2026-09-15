@@ -1,0 +1,46 @@
+* { 
+  box-sizing: border-box; 
+} 
+  
+body { 
+  margin: 0; 
+  font-family: Arial, sans-serif; 
+  color: #1f2937; 
+  background: #f3f4f6; 
+} 
+  
+.container { 
+  width: min(90%, 640px); 
+  margin-inline: auto; 
+  padding-block: 64px; 
+} 
+  
+.praktikum-card { 
+  padding: 32px; 
+  border-radius: 16px; 
+  background: #ffffff; 
+} 
+  
+.label { 
+  font-weight: 700; 
+  color: #2563eb; 
+} 
+  
+label, 
+input { 
+  display: block; 
+  width: 100%; 
+} 
+  
+input { 
+  margin-block: 6px 16px; 
+  padding: 10px; 
+} 
+  
+button { 
+  padding: 10px 16px; 
+  border: 0; 
+  border-radius: 8px; 
+  color: #ffffff; 
+  background: #2563eb; 
+}
