@@ -31,4 +31,11 @@ function prosesForm(event) {
   tampilkanPesan('Perhitungan berhasil.'); 
 } 
   
-form.addEventListener('submit', prosesForm); 
+form.addEventListener('submit', (event) => {
+   event.preventDefault();
+    prosesForm(event);
+}); 
+
+// form.addEventListener('submit', (event) => { 
+// prosesForm(event); 
+// });

@@ -1,3 +1,5 @@
+Bisa. Berikut versi **file `README.md`** yang sudah siap kamu copy ke repository.
+
 ````markdown
 # Mata Kuliah Proyek 3
 
