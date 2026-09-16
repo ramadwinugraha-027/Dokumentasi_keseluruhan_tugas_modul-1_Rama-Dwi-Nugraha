@@ -1,0 +1,8 @@
+{
+  "name": "Rama Dwi Nugraha",
+  "role": "Mahasiswa D3 Teknik Informatika",
+  "bio": "Saya mahasiswa D3 Teknik Informatika yang sedang mendalami pemrograman web interaktif.",
+  "avatar": "assets/profile.jpeg",
+  "detail": "Saat ini fokus mempelajari HTML5, CSS3, JavaScript ES6+, dan pengembangan aplikasi berbasis web.",
+  "skills": ["HTML", "CSS", "Problem Solving", "JavaScript"]
+}

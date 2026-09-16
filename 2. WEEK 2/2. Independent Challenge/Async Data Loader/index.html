@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Async Data Loader</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <div class="container">
+    <h2>Tips Belajar Hari Ini</h2>
+
+    <div id="status-akses" class="sr-only" aria-live="polite"></div>
+
+    <div id="konten-box" class="box-konten">
+      <p id="teks-output" class="pesan-empty">Belum ada data. Klik tombol di bawah untuk memuat tips.</p>
+    </div>
+
+    <div class="aksi">
+      <button type="button" id="btn-muat">Muat Data</button>
+      <button type="button" id="btn-coba-lagi" hidden>Coba Lagi</button>
+    </div>
+  </div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

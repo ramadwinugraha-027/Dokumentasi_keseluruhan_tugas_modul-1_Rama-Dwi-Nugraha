@@ -1,0 +1,33 @@
+.faq {
+  max-width: 500px;
+  margin: 20px auto;
+  font-family: sans-serif;
+}
+
+.faq-item {
+  border: 1px solid #ccc;
+  margin-bottom: 8px;
+}
+
+.faq-btn {
+  width: 100%;
+  padding: 10px;
+  background: #eee;
+  border: none;
+  text-align: left;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.faq-btn:hover {
+  background: #ddd;
+}
+
+.faq-ans {
+  padding: 10px;
+  background: #fff;
+}
+
+.faq-ans[hidden] {
+  display: none;
+}

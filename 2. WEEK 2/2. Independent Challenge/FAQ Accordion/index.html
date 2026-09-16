@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FAQ Accordion</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <div class="faq">
+    <div class="faq-item">
+      <button type="button" class="faq-btn" aria-expanded="false" aria-controls="faq-ans-1">
+        Apa itu modul Vanilla JavaScript?
+      </button>
+      <div id="faq-ans-1" class="faq-ans" hidden>
+        <p>Modul ini membahas konsep dasar JavaScript tanpa framework atau library luar.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button type="button" class="faq-btn" aria-expanded="false" aria-controls="faq-ans-2">
+        Bagaimana cara kerja aria-expanded?
+      </button>
+      <div id="faq-ans-2" class="faq-ans" hidden>
+        <p>Properti ini memberi tahu pembaca layar (screen reader) apakah konten jawaban sedang terbuka atau tertutup.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button type="button" class="faq-btn" aria-expanded="false" aria-controls="faq-ans-3">
+        Apakah accordion bisa diakses via keyboard?
+      </button>
+      <div id="faq-ans-3" class="faq-ans" hidden>
+        <p>Bisa, karena menggunakan elemen button bawaan yang dapat difokuskan menggunakan tombol Tab dan Enter/Space.</p>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

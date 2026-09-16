@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Interactive Profile Card</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-container">
+      <h1>Profil Mahasiswa</h1>
+      <button id="theme-toggle" class="button-sec">Ganti Tema</button>
+    </div>
+  </header>
+
+  <main class="container">
+    <div id="state-loading" class="state-box">Memuat data profil...</div>
+    <div id="state-error" class="state-box hidden">
+      <p>Gagal memuat data profil.</p>
+      <button id="btn-retry" class="button">Coba Lagi</button>
+    </div>
+
+    <div id="profile-card" class="content-layout hidden">
+      <section id="tentang" class="card" aria-labelledby="judul-tentang">
+        <h2 id="judul-tentang">Tentang Saya</h2>
+        <img id="profile-img" class="profile-img" src="" alt="Foto profil mahasiswa">
+        <h3 id="profile-name"></h3>
+        <p id="profile-role" class="badge-role"></p>
+        <p id="profile-bio"></p>
+
+        <button id="btn-detail" class="button" aria-expanded="false">Tampilkan Detail</button>
+        <div id="profile-detail" class="detail-content hidden">
+          <p id="detail-text"></p>
+        </div>
+      </section>
+
+      <section id="keterampilan" class="card" aria-labelledby="judul-keterampilan">
+        <h2 id="judul-keterampilan">Keterampilan</h2>
+        
+        <form id="skill-form" class="skill-form">
+          <input type="text" id="skill-input" placeholder="Tambah keterampilan..." />
+          <button type="submit" class="button">Tambah</button>
+        </form>
+        <p id="form-error" class="error-text hidden">Keterampilan tidak boleh kosong!</p>
+
+        <p id="state-empty-skill" class="empty-text hidden">Belum ada keterampilan.</p>
+        <ul id="skill-list" class="skill-tags"></ul>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; 2026 Profil Mahasiswa</p>
+    </div>
+  </footer>
+
+  <script src="js/app.js" defer></script>
+</body>
+</html>
