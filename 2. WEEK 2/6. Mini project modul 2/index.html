@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Klub Koding Kampus - Tempat Asik Belajar Web</title>
+  <meta name="description" content="Komunitas belajar mahasiswa untuk memahami dasar web, logika pemrograman, dan cara kerja kode lewat praktik dan diskusi bareng.">
+  <link rel="stylesheet" href="css/stylebaru.css">
+  <script src="js/app.js" defer></script>
+</head>
+<body>
+  <header class="top-nav">
+    <div class="shell nav-layout">
+      <div class="brand">
+        <a href="#hero" class="brand-link">Klub Koding</a>
+        <button id="nav-toggle" class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Buka menu navigasi">
+          ☰
+        </button>
+      </div>
+      <nav id="nav-menu" class="nav-menu" aria-label="Menu Utama">
+        <ul class="nav-links">
+          <li><a href="#tentang" class="nav-item">Tentang</a></li>
+          <li><a href="#kegiatan" class="nav-item">Kegiatan</a></li>
+          <li><a href="#faq" class="nav-item">FAQ</a></li>
+          <li><a href="#jadwal" class="nav-item">Jadwal</a></li>
+          <li><a href="#gabung" class="nav-item nav-btn">Gabung Sesi</a></li>
+          <li><button id="theme-toggle" class="btn-theme-toggle">Tema Gelap</button></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section id="hero" class="hero-block" aria-labelledby="hero-title">
+      <div class="shell">
+        <div class="hero-content">
+          <p class="tagline">Kelompok Belajar Mahasiswa</p>
+          <h1 id="hero-title">Belajar Ngoding dari Dasar, Biar Nggak Cuma Ikut-Ikutan</h1>
+          <p class="hero-lead">Di sini kita nggak cuma copy-paste kode atau asal pakai library. Kita belajar memahami HTML, ngatur layout dengan CSS, sampai melatih logika pemrograman lewat latihan dan review kode bareng.</p>
+          <div class="action-row">
+            <a href="#gabung" class="btn btn-primary">Daftar Sesi Diskusi</a>
+            <a href="#kegiatan" class="btn btn-secondary">Lihat Kegiatan</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="tentang" class="section-pad" aria-labelledby="about-title">
+      <div class="shell">
+        <div class="section-head">
+          <h2 id="about-title">Belajar Bareng, Paham dari Dasarnya</h2>
+          <p>Kita mulai dari hal dasar dulu, lalu pelan-pelan naik ke materi yang lebih kompleks.</p>
+        </div>
+        <div class="about-grid">
+          <div class="about-desc">
+            <p>Klub Koding dibuat sebagai tempat mahasiswa bisa belajar bareng di luar jam kuliah. Nggak harus langsung jago, yang penting mau mencoba, bertanya, dan memahami cara kerja kode yang kita buat.</p>
+            <p>Setiap anggota juga diajak untuk membiasakan diri mencatat proses belajar, mencoba debugging lewat DevTools, dan belajar menggunakan Git dengan cara yang benar.</p>
+          </div>
+          <figure class="about-figure">
+            <img src="assets/workspace.jpg.png" alt="Belajar coding" class="fluid-img">
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section id="kegiatan" class="section-pad bg-contrast" aria-labelledby="activity-title">
+      <div class="shell">
+        <div class="section-head">
+          <h2 id="activity-title">Kegiatan Mingguan</h2>
+          <p>Belajar nggak cuma baca materi, tapi langsung coba dan bahas bareng.</p>
+        </div>
+
+        <div class="filter-wrapper">
+          <label for="category-filter">Filter Kategori Kegiatan:</label>
+          <select id="category-filter" class="select-filter">
+            <option value="all">Semua Kategori</option>
+            <option value="dasar">Praktik Dasar</option>
+            <option value="rutin">Rutin Mingguan</option>
+            <option value="kolaborasi">Kolaborasi</option>
+          </select>
+        </div>
+
+        <div id="activity-card-track" class="card-track" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <section id="faq" class="section-pad" aria-labelledby="faq-title">
+      <div class="shell">
+        <div class="section-head">
+          <h2 id="faq-title">Pertanyaan Umum (FAQ)</h2>
+          <p>Seputar kegiatan dan cara ikutan belajar di Klub Koding Kampus.</p>
+        </div>
+        <div class="accordion">
+          <div class="accordion-item">
+            <button class="accordion-trigger" aria-expanded="false" aria-controls="faq-ans-1">
+              Apakah mahasiswa pemula yang belum pernah ngoding boleh bergabung?
+            </button>
+            <div id="faq-ans-1" class="accordion-panel" hidden>
+              <p>Sangat boleh! Klub ini justru dibuat untuk belajar dari nol bersama-sama tanpa takut salah.</p>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <button class="accordion-trigger" aria-expanded="false" aria-controls="faq-ans-2">
+              Peralatan apa saja yang harus dibawa saat sesi diskusi?
+            </button>
+            <div id="faq-ans-2" class="accordion-panel" hidden>
+              <p>Cukup membawa laptop dengan browser (Chrome/Firefox) dan code editor seperti VS Code yang sudah terinstall.</p>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <button class="accordion-trigger" aria-expanded="false" aria-controls="faq-ans-3">
+              Apakah kegiatan ini dipungut biaya?
+            </button>
+            <div id="faq-ans-3" class="accordion-panel" hidden>
+              <p>Tidak ada biaya sama sekali (Gratis). Ini adalah kelompok belajar mandiri sesama mahasiswa.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="jadwal" class="section-pad bg-contrast" aria-labelledby="schedule-title">
+      <div class="shell">
+        <div class="info-banner" id="gabung">
+          <div class="banner-body">
+            <h2 id="schedule-title">Mau Ikut Belajar Bareng?</h2>
+            <p>Sesi berikutnya diadakan hari Sabtu, pukul 09.00 - 11.30 WIB di Ruang Diskusi Lab Teknik. Isikan form di bawah untuk mengonfirmasi kehadiranmu.</p>
+          </div>
+        </div>
+
+        <form id="contact-form" class="contact-form" novalidate>
+          <div class="form-group">
+            <label for="form-nama">Nama Lengkap</label>
+            <input type="text" id="form-nama" name="nama" placeholder="Masukkan nama kamu" required>
+            <span class="error-msg" id="err-nama"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="form-email">Email Kampus</label>
+            <input type="email" id="form-email" name="email" placeholder="contoh: nim@mhs.polban.ac.id" required>
+            <span class="error-msg" id="err-email"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="form-alasan">Alasan / Harapan Ikut Belajar</label>
+            <textarea id="form-alasan" name="alasan" rows="3" placeholder="Tuliskan materi yang ingin kamu pelajari" required></textarea>
+            <span class="error-msg" id="err-alasan"></span>
+          </div>
+
+          <button type="submit" class="btn btn-primary">Kirim Konfirmasi</button>
+        </form>
+
+        <div id="form-feedback" class="form-feedback hidden" role="alert"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-end">
+    <div class="shell end-layout">
+      <p>&copy; 2026 Klub Koding Kampus. Dibuat untuk Mini Project Modul 2 Vanilla JS.</p>
+    </div>
+  </footer>
+
+  <button id="back-to-top" class="back-to-top hidden" aria-label="Kembali ke atas">
+    ↑
+  </button>
+</body>
+</html>

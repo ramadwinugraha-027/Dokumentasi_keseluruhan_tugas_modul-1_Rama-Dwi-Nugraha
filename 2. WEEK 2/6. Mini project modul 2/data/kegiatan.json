@@ -1,0 +1,34 @@
+[
+  {
+    "id": 1,
+    "category": "dasar",
+    "badge": "Praktik Dasar",
+    "title": "Klinik HTML & CSS Murni",
+    "desc": "Latihan mencari kesalahan HTML, memperbaiki tampilan dan aksesibilitas, serta membuat layout responsif tanpa bergantung pada framework.",
+    "specs": ["Ngulik DOM & Box Model", "Belajar Mobile-First Flexbox", "Cek Dasar Aksesibilitas"]
+  },
+  {
+    "id": 2,
+    "category": "rutin",
+    "badge": "Rutin Mingguan",
+    "title": "Bedah Kasus & Logika C",
+    "desc": "Membahas kode C dari hal dasar sampai struktur data, pointer, dan file agar lebih paham apa yang sebenarnya terjadi di balik program.",
+    "specs": ["Tracing Alur Program", "Latihan Struktur Data", "Mencari dan Memperbaiki Error"]
+  },
+  {
+    "id": 3,
+    "category": "kolaborasi",
+    "badge": "Kolaborasi",
+    "title": "Ulasan Kode dengan Teman",
+    "desc": "Saling melihat dan memberi masukan pada kode teman, belajar membuat commit yang jelas, serta menyiapkan project agar lebih mudah dipahami.",
+    "specs": ["Penamaan Kode yang Rapi", "Latihan Menjelaskan Kode", "Membuat README Sendiri"]
+  },
+  {
+    "id": 4,
+    "category": "dasar",
+    "badge": "Praktik Dasar",
+    "title": "Pengenalan Git & GitHub",
+    "desc": "Memahami konsep version control, merapikan repository, dan mengunggah project HTML/CSS pertama ke internet.",
+    "specs": ["Dasar Git Commands", "Branching & Merge", "GitHub Pages Deployment"]
+  }
+]
