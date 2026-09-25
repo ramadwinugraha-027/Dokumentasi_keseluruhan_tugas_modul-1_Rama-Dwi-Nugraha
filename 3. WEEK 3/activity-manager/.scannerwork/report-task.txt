@@ -1,0 +1,6 @@
+projectKey=Laravel-Activity-App
+serverUrl=http://localhost:9000
+serverVersion=26.9.0.129388
+dashboardUrl=http://localhost:9000/dashboard?id=Laravel-Activity-App
+ceTaskId=85988c09-89fe-479b-81f2-c0b106ebe1df
+ceTaskUrl=http://localhost:9000/api/ce/task?id=85988c09-89fe-479b-81f2-c0b106ebe1df
