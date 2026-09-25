@@ -7,7 +7,6 @@
 <body>
     <h1>Edit Kegiatan</h1>
 
-    {{-- Pesan error validasi & business rule --}}
     @if ($errors->any())
         <div style="color: red; margin-bottom: 15px;">
             <ul>
@@ -45,7 +44,6 @@
         <p>
             <label>Status Saat Ini: <strong>{{ $activity->status }}</strong></label><br>
             <select name="status">
-                {{-- Aturan UX Blade: Jika status Done, hanya tampilkan opsi Done --}}
                 @if ($activity->status === 'Done')
                     <option value="Done" selected>Done</option>
                 @else

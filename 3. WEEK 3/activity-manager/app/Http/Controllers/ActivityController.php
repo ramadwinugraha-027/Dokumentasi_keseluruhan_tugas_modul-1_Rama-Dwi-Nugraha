@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Activity;
 use App\Http\Requests\StoreActivityRequest;
 use App\Http\Requests\UpdateActivityRequest;
+use App\Models\Activity;
 use App\Services\ActivityService;
 use DomainException;
 use Illuminate\Http\RedirectResponse;
@@ -15,6 +15,7 @@ class ActivityController extends Controller
     public function index(): View
     {
         $activities = Activity::query()->orderBy('activity_date')->get();
+
         return view('activities.index', compact('activities'));
     }
 
