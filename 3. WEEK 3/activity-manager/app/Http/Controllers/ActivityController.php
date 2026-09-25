@@ -8,15 +8,24 @@ use App\Models\Activity;
 use App\Services\ActivityService;
 use DomainException;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 use Illuminate\View\View;
 
 class ActivityController extends Controller
 {
-    public function index(): View
+    public function index(Request $request): View
     {
-        $activities = Activity::query()->orderBy('activity_date')->get();
+        $status = $request->query('status');
+        $validStatuses = ['Planned', 'Ongoing', 'Done'];
 
-        return view('activities.index', compact('activities'));
+        $activities = Activity::query()
+            ->when(in_array($status, $validStatuses), function ($query) use ($status) {
+                return $query->where('status', $status);
+            })
+            ->orderBy('activity_date')
+            ->get();
+
+        return view('activities.index', compact('activities', 'status'));
     }
 
     public function create(): View

@@ -13,6 +13,16 @@
         </div>
     @endif
 
+    <form method="GET" action="{{ route('activities.index') }}" style="margin-bottom: 20px;">
+        <label for="status">Filter Status:</label>
+        <select name="status" id="status" onchange="this.form.submit()">
+            <option value="">Semua Status</option>
+            <option value="Planned" {{ request('status') == 'Planned' ? 'selected' : '' }}>Planned</option>
+            <option value="Ongoing" {{ request('status') == 'Ongoing' ? 'selected' : '' }}>Ongoing</option>
+            <option value="Done" {{ request('status') == 'Done' ? 'selected' : '' }}>Done</option>
+        </select>
+    </form>
+
     @forelse ($activities as $activity)
 
         <article class="card" style="margin-bottom: 15px; padding: 15px; border: 1px solid #ccc;">
@@ -28,7 +38,6 @@
                 Status: {{ $activity->status }}
             </p>
 
-            {{-- Aksi Edit dan Hapus untuk T2-05 & T2-06 --}}
             <div style="margin-top: 10px;">
                 <a href="{{ route('activities.edit', $activity) }}">Edit</a>
 
