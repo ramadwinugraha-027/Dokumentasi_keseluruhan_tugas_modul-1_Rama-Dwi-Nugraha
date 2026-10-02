@@ -26,12 +26,16 @@ class Activity extends Model
         'activity_date',
         'category_id',
         'status',
+        'capacity',
+        'registered_count',
     ];
 
     protected function casts(): array
     {
         return [
             'activity_date' => 'date',
+            'capacity' => 'integer',
+            'registered_count' => 'integer',
         ];
     }
 
@@ -52,6 +56,16 @@ class Activity extends Model
             && ! empty($this->activity_date)
             && ! empty($this->description)
             && trim($this->description) !== '';
+    }
+
+    public function hasCapacity(): bool
+    {
+        return $this->registered_count < $this->capacity;
+    }
+
+    public function isPast(): bool
+    {
+        return $this->activity_date < now()->startOfDay();
     }
 
     public function scopeSearch(Builder $query, ?string $search): Builder

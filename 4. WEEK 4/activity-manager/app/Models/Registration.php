@@ -13,10 +13,18 @@ class Registration extends Model
     protected $fillable = [
         'activity_id',
         'participant_name',
-        'participant_email',
+        'email',
+        'registered_at',
         'participant_phone',
         'status',
     ];
+
+    protected function casts(): array
+    {
+        return [
+            'registered_at' => 'datetime',
+        ];
+    }
 
     public function activity(): BelongsTo
     {

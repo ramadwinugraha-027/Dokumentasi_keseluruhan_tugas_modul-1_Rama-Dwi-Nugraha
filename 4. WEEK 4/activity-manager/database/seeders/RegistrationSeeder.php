@@ -16,11 +16,12 @@ class RegistrationSeeder extends Seeder
             Registration::firstOrCreate(
                 [
                     'activity_id' => $activity->id,
-                    'participant_email' => 'rama.dwi@polban.ac.id',
+                    'email' => 'rama.dwi@polban.ac.id',
                 ],
                 [
                     'participant_name' => 'Rama Dwi Nugraha',
                     'participant_phone' => '081234567890',
+                    'registered_at' => now(),
                     'status' => 'Confirmed',
                 ]
             );
@@ -28,14 +29,19 @@ class RegistrationSeeder extends Seeder
             Registration::firstOrCreate(
                 [
                     'activity_id' => $activity->id,
-                    'participant_email' => 'mahasiswa.dummy@polban.ac.id',
+                    'email' => 'mahasiswa.dummy@polban.ac.id',
                 ],
                 [
                     'participant_name' => 'Mahasiswa Contoh',
                     'participant_phone' => '089876543210',
+                    'registered_at' => now(),
                     'status' => 'Registered',
                 ]
             );
+
+            $activity->update([
+                'registered_count' => $activity->registrations()->count(),
+            ]);
         }
     }
 }

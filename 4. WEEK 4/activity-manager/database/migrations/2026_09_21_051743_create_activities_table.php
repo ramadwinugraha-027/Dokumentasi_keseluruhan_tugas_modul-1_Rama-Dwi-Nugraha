@@ -18,6 +18,8 @@ return new class extends Migration
             $table->text('description')->nullable();
             $table->date('activity_date');
             $table->string('status', 20)->default('draft');
+            $table->unsignedInteger('capacity')->default(20);
+            $table->unsignedInteger('registered_count')->default(0);
             $table->softDeletes();
             $table->timestamps();
         });

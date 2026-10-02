@@ -14,10 +14,13 @@ return new class extends Migration
                 ->constrained('activities')
                 ->cascadeOnDelete();
             $table->string('participant_name', 100);
-            $table->string('participant_email', 100);
+            $table->string('email', 100);
+            $table->timestamp('registered_at')->nullable();
             $table->string('participant_phone', 20)->nullable();
             $table->string('status', 30)->default('Registered');
             $table->timestamps();
+
+            $table->unique(['activity_id', 'email']);
         });
     }
 
