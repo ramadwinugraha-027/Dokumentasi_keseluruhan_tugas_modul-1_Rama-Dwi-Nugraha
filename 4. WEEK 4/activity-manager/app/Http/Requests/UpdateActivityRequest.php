@@ -27,6 +27,7 @@ class UpdateActivityRequest extends FormRequest
             'title' => ['required', 'string', 'min:5', 'max:100'],
             'activity_date' => ['required', 'date'],
             'description' => ['nullable', 'string', 'max:1000'],
+            'poster' => ['nullable', 'image', 'mimes:jpeg,png,jpg,webp', 'max:2048'],
         ];
     }
 
@@ -40,6 +41,9 @@ class UpdateActivityRequest extends FormRequest
             'title.required' => 'Judul kegiatan wajib diisi.',
             'title.min' => 'Judul kegiatan minimal 5 karakter.',
             'activity_date.required' => 'Tanggal kegiatan wajib diisi.',
+            'poster.image' => 'File poster harus berupa gambar.',
+            'poster.mimes' => 'Format file poster harus berupa jpeg, png, jpg, atau webp.',
+            'poster.max' => 'Ukuran file poster maksimal 2 MB.',
         ];
     }
 }

@@ -15,7 +15,7 @@
         </div>
     @endif
 
-    <form action="{{ route('activities.update', $activity) }}" method="POST">
+    <form action="{{ route('activities.update', $activity) }}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('PUT')
 
@@ -43,6 +43,17 @@
         <div class="form-group">
             <label for="activity_date">Tanggal Kegiatan *</label>
             <input type="date" id="activity_date" name="activity_date" class="form-control" value="{{ old('activity_date', optional($activity->activity_date)->format('Y-m-d')) }}" required>
+        </div>
+
+        <div class="form-group">
+            <label for="poster">Poster Kegiatan (Opsional, Max: 2 MB)</label>
+            @if ($activity->poster_path)
+                <div style="margin-bottom: 8px;">
+                    <img src="{{ Storage::url($activity->poster_path) }}" alt="Poster Saat Ini" style="max-width: 140px; height: auto; border: 1px solid #000; border-radius: 3px; display: block;">
+                    <small style="color: #444;">Poster saat ini (unggah baru jika ingin mengganti)</small>
+                </div>
+            @endif
+            <input type="file" id="poster" name="poster" class="form-control" accept="image/jpeg,image/png,image/jpg,image/webp">
         </div>
 
         <div class="form-group">

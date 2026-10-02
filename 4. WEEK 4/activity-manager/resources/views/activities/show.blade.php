@@ -6,6 +6,12 @@
     </div>
 
     <div style="background: #ffffff; border: 1px solid #000000; padding: 16px; border-radius: 4px; margin-bottom: 20px;">
+        @if ($activity->poster_path)
+            <div style="margin-bottom: 14px;">
+                <img src="{{ Storage::url($activity->poster_path) }}" alt="Poster Kegiatan {{ $activity->title }}" style="max-width: 240px; height: auto; border: 1px solid #000000; border-radius: 4px; display: block;">
+            </div>
+        @endif
+
         <h3 style="margin-top: 0; color: #000000;">{{ $activity->title }}</h3>
         <p style="color: #000000;"><strong>Kode Kegiatan:</strong> {{ $activity->code }}</p>
         <p style="color: #000000;"><strong>Kategori:</strong> {{ $activity->category->name ?? '-' }}</p>

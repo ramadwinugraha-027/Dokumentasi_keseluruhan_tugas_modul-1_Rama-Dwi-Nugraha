@@ -5,6 +5,8 @@ namespace App\Services;
 use App\Models\Activity;
 use DomainException;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
+use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Storage;
 
 class ActivityService
 {
@@ -29,12 +31,28 @@ class ActivityService
     {
         $data['status'] = Activity::STATUS_DRAFT;
 
+        if (isset($data['poster']) && $data['poster'] instanceof UploadedFile) {
+            $data['poster_path'] = $data['poster']->store('posters', 'public');
+        }
+        unset($data['poster']);
+
         return Activity::create($data);
     }
 
     public function update(Activity $activity, array $data): Activity
     {
         unset($data['status']);
+
+        if (isset($data['poster']) && $data['poster'] instanceof UploadedFile) {
+            $newPath = $data['poster']->store('posters', 'public');
+
+            if ($activity->poster_path && Storage::disk('public')->exists($activity->poster_path)) {
+                Storage::disk('public')->delete($activity->poster_path);
+            }
+
+            $data['poster_path'] = $newPath;
+        }
+        unset($data['poster']);
 
         $activity->update($data);
 
@@ -83,6 +101,10 @@ class ActivityService
     public function forceDelete(int $id): bool
     {
         $activity = Activity::onlyTrashed()->findOrFail($id);
+
+        if ($activity->poster_path && Storage::disk('public')->exists($activity->poster_path)) {
+            Storage::disk('public')->delete($activity->poster_path);
+        }
 
         return (bool) $activity->forceDelete();
     }

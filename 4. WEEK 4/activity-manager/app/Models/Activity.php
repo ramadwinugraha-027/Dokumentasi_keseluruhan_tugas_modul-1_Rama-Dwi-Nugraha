@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\Storage;
 
 class Activity extends Model
 {
@@ -23,6 +24,7 @@ class Activity extends Model
         'code',
         'title',
         'description',
+        'poster_path',
         'activity_date',
         'category_id',
         'status',
@@ -47,6 +49,11 @@ class Activity extends Model
     public function registrations(): HasMany
     {
         return $this->hasMany(Registration::class);
+    }
+
+    public function getPosterUrlAttribute(): ?string
+    {
+        return $this->poster_path ? Storage::disk('public')->url($this->poster_path) : null;
     }
 
     public function isComplete(): bool

@@ -16,6 +16,7 @@ return new class extends Migration
                 ->restrictOnDelete();
             $table->string('title', 100);
             $table->text('description')->nullable();
+            $table->string('poster_path', 255)->nullable();
             $table->date('activity_date');
             $table->string('status', 20)->default('draft');
             $table->unsignedInteger('capacity')->default(20);

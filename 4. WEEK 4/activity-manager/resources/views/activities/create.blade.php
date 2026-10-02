@@ -15,7 +15,7 @@
         </div>
     @endif
 
-    <form action="{{ route('activities.store') }}" method="POST">
+    <form action="{{ route('activities.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
 
         <div class="form-group">
@@ -43,6 +43,11 @@
         <div class="form-group">
             <label for="activity_date">Tanggal Kegiatan *</label>
             <input type="date" id="activity_date" name="activity_date" class="form-control" value="{{ old('activity_date') }}" required>
+        </div>
+
+        <div class="form-group">
+            <label for="poster">Poster Kegiatan (Opsional, Max: 2 MB)</label>
+            <input type="file" id="poster" name="poster" class="form-control" accept="image/jpeg,image/png,image/jpg,image/webp">
         </div>
 
         <div class="form-group">
