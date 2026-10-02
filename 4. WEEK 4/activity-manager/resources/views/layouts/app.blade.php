@@ -237,6 +237,7 @@
             <h2>Activity Manager</h2>
             <nav>
                 <a href="{{ route('activities.index') }}">Daftar Kegiatan</a>
+                <a href="{{ route('activities.trash') }}">Sampah (Trash)</a>
                 <a href="{{ route('activities.create') }}">+ Tambah Kegiatan</a>
             </nav>
         </header>

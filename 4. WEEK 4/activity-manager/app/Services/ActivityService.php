@@ -16,6 +16,15 @@ class ActivityService
             ->withQueryString();
     }
 
+    public function getTrash(int $perPage = 10): LengthAwarePaginator
+    {
+        return Activity::onlyTrashed()
+            ->with('category')
+            ->latest('deleted_at')
+            ->paginate($perPage)
+            ->withQueryString();
+    }
+
     public function create(array $data): Activity
     {
         $data['status'] = Activity::STATUS_DRAFT;
@@ -61,5 +70,20 @@ class ActivityService
     public function delete(Activity $activity): bool
     {
         return (bool) $activity->delete();
+    }
+
+    public function restore(int $id): Activity
+    {
+        $activity = Activity::onlyTrashed()->findOrFail($id);
+        $activity->restore();
+
+        return $activity;
+    }
+
+    public function forceDelete(int $id): bool
+    {
+        $activity = Activity::onlyTrashed()->findOrFail($id);
+
+        return (bool) $activity->forceDelete();
     }
 }

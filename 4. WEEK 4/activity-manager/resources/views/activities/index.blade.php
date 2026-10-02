@@ -1,9 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
-    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px;">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; flex-wrap: wrap; gap: 8px;">
         <h3 style="margin: 0; font-size: 17px; color: #000000;">Daftar Kegiatan</h3>
-        <a href="{{ route('activities.create') }}" class="btn btn-primary">+ Tambah Kegiatan</a>
+        <div style="display: flex; gap: 6px;">
+            <a href="{{ route('activities.trash') }}" class="btn btn-secondary">Sampah ({{ $trashedCount ?? 0 }})</a>
+            <a href="{{ route('activities.create') }}" class="btn btn-primary">+ Tambah Kegiatan</a>
+        </div>
     </div>
 
     <div style="background: #ffffff; border: 1px solid #000000; padding: 14px; border-radius: 4px; margin-bottom: 18px;">
@@ -104,7 +107,7 @@
                                 </form>
                             @endif
 
-                            <form action="{{ route('activities.destroy', $activity) }}" method="POST" style="display: inline; margin: 0;" onsubmit="return confirm('Yakin ingin menghapus kegiatan ini?')">
+                            <form action="{{ route('activities.destroy', $activity) }}" method="POST" style="display: inline; margin: 0;" onsubmit="return confirm('Yakin ingin memindahkan kegiatan ini ke sampah?')">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-danger btn-sm">Hapus</button>

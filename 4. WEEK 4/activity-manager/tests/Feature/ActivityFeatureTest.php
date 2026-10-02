@@ -6,6 +6,7 @@ use App\Models\Activity;
 use App\Models\Category;
 use DomainException;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\DB;
 use Tests\TestCase;
 
 class ActivityFeatureTest extends TestCase
@@ -280,6 +281,81 @@ class ActivityFeatureTest extends TestCase
         $response->assertSee('page=1');
         $response->assertSee('search=Workshop');
         $response->assertSee('status=published');
+    }
+
+    public function test_ac10_soft_delete_dan_tidak_tampil_di_index_normal(): void
+    {
+        $activity = Activity::create([
+            'code' => 'ACT-401',
+            'title' => 'Kegiatan Yang Akan Dihapus',
+            'description' => 'Deskripsi kegiatan.',
+            'activity_date' => '2026-11-01',
+            'category_id' => $this->category->id,
+            'status' => 'draft',
+        ]);
+
+        $response = $this->delete(route('activities.destroy', $activity));
+
+        $response->assertRedirect(route('activities.index'));
+        $this->assertSoftDeleted('activities', ['id' => $activity->id]);
+
+        $responseIndex = $this->get(route('activities.index'));
+        $responseIndex->assertDontSee('ACT-401');
+
+        $responseTrash = $this->get(route('activities.trash'));
+        $responseTrash->assertStatus(200);
+        $responseTrash->assertSee('ACT-401');
+    }
+
+    public function test_ac11_restore_data_terhapus(): void
+    {
+        $activity = Activity::create([
+            'code' => 'ACT-402',
+            'title' => 'Kegiatan Untuk Direstore',
+            'description' => 'Deskripsi kegiatan.',
+            'activity_date' => '2026-11-02',
+            'category_id' => $this->category->id,
+            'status' => 'draft',
+        ]);
+
+        $activity->delete();
+        $this->assertSoftDeleted('activities', ['id' => $activity->id]);
+
+        $responseRestore = $this->patch(route('activities.restore', $activity->id));
+
+        $responseRestore->assertRedirect(route('activities.trash'));
+        $this->assertNotSoftDeleted('activities', ['id' => $activity->id]);
+
+        $responseIndex = $this->get(route('activities.index'));
+        $responseIndex->assertSee('ACT-402');
+    }
+
+    public function test_ac12_tidak_ada_pola_n_plus_1_pada_index(): void
+    {
+        for ($i = 1; $i <= 10; $i++) {
+            Activity::create([
+                'code' => sprintf('N1-%03d', $i),
+                'title' => "Kegiatan N1 Testing {$i}",
+                'description' => "Deskripsi {$i}",
+                'activity_date' => '2026-11-05',
+                'category_id' => ($i % 2 === 0) ? $this->category->id : $this->otherCategory->id,
+                'status' => 'published',
+            ]);
+        }
+
+        DB::flushQueryLog();
+        DB::enableQueryLog();
+
+        $response = $this->get(route('activities.index'));
+        $response->assertStatus(200);
+
+        $queries = DB::getQueryLog();
+
+        $categoryQueries = array_filter($queries, function ($q) {
+            return str_contains(strtolower($q['query']), 'from "categories"') || str_contains(strtolower($q['query']), 'from `categories`');
+        });
+
+        $this->assertLessThanOrEqual(2, count($categoryQueries));
     }
 
     public function test_hapus_kategori_yang_masih_dipakai(): void

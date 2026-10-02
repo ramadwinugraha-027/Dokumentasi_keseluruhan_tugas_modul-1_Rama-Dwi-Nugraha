@@ -18,6 +18,7 @@ return new class extends Migration
             $table->text('description')->nullable();
             $table->date('activity_date');
             $table->string('status', 20)->default('draft');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

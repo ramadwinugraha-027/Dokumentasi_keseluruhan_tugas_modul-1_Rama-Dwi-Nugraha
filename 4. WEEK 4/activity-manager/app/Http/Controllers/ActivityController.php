@@ -26,8 +26,16 @@ class ActivityController extends Controller
         $filters = $request->only(['search', 'category_id', 'status', 'sort']);
         $activities = $this->activityService->getAll($filters, 10);
         $categories = Category::orderBy('name')->get();
+        $trashedCount = Activity::onlyTrashed()->count();
 
-        return view('activities.index', compact('activities', 'categories', 'filters'));
+        return view('activities.index', compact('activities', 'categories', 'filters', 'trashedCount'));
+    }
+
+    public function trash(): View
+    {
+        $activities = $this->activityService->getTrash(10);
+
+        return view('activities.trash', compact('activities'));
     }
 
     public function create(): View
@@ -72,7 +80,23 @@ class ActivityController extends Controller
         $this->activityService->delete($activity);
 
         return to_route('activities.index')
-            ->with('success', 'Kegiatan berhasil dihapus.');
+            ->with('success', 'Kegiatan berhasil dipindahkan ke sampah (soft deleted).');
+    }
+
+    public function restore(int $id): RedirectResponse
+    {
+        $activity = $this->activityService->restore($id);
+
+        return to_route('activities.trash')
+            ->with('success', "Kegiatan '{$activity->title}' berhasil dipulihkan (restored).");
+    }
+
+    public function forceDelete(int $id): RedirectResponse
+    {
+        $this->activityService->forceDelete($id);
+
+        return to_route('activities.trash')
+            ->with('success', 'Kegiatan berhasil dihapus secara permanen.');
     }
 
     public function publish(Activity $activity): RedirectResponse
