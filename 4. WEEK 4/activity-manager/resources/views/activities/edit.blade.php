@@ -1,15 +1,13 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <title>Edit Kegiatan</title>
-</head>
-<body>
-    <h1>Edit Kegiatan</h1>
+@extends('layouts.app')
+
+@section('content')
+    <div style="margin-bottom: 15px;">
+        <h3>Edit Kegiatan</h3>
+    </div>
 
     @if ($errors->any())
-        <div style="color: red; margin-bottom: 15px;">
-            <ul>
+        <div class="alert alert-danger">
+            <ul style="margin: 0; padding-left: 20px;">
                 @foreach ($errors->all() as $error)
                     <li>{{ $error }}</li>
                 @endforeach
@@ -21,43 +19,49 @@
         @csrf
         @method('PUT')
 
-        <p>
-            <label>Judul Kegiatan:</label><br>
-            <input type="text" name="title" value="{{ old('title', $activity->title) }}">
-        </p>
+        <div class="form-group">
+            <label for="code">Kode Kegiatan (Unique) *</label>
+            <input type="text" id="code" name="code" class="form-control" value="{{ old('code', $activity->code) }}" required>
+        </div>
 
-        <p>
-            <label>Kategori:</label><br>
-            <input type="text" name="category" value="{{ old('category', $activity->category) }}">
-        </p>
+        <div class="form-group">
+            <label for="title">Judul Kegiatan *</label>
+            <input type="text" id="title" name="title" class="form-control" value="{{ old('title', $activity->title) }}" required>
+        </div>
 
-        <p>
-            <label>Tanggal Kegiatan:</label><br>
-            <input type="date" name="activity_date" value="{{ old('activity_date', optional($activity->activity_date)->format('Y-m-d')) }}">
-        </p>
-
-        <p>
-            <label>Deskripsi (Opsional):</label><br>
-            <textarea name="description">{{ old('description', $activity->description) }}</textarea>
-        </p>
-
-        <p>
-            <label>Status Saat Ini: <strong>{{ $activity->status }}</strong></label><br>
-            <select name="status">
-                @if ($activity->status === 'Done')
-                    <option value="Done" selected>Done</option>
-                @else
-                    <option value="Planned" @selected(old('status', $activity->status) === 'Planned')>Planned</option>
-                    <option value="Ongoing" @selected(old('status', $activity->status) === 'Ongoing')>Ongoing</option>
-                    <option value="Done" @selected(old('status', $activity->status) === 'Done')>Done</option>
-                @endif
+        <div class="form-group">
+            <label for="category_id">Kategori *</label>
+            <select id="category_id" name="category_id" class="form-control" required>
+                @foreach ($categories as $category)
+                    <option value="{{ $category->id }}" @selected(old('category_id', $activity->category_id) == $category->id)>
+                        {{ $category->name }}
+                    </option>
+                @endforeach
             </select>
-        </p>
+        </div>
 
-        <button type="submit">Simpan Perubahan</button>
+        <div class="form-group">
+            <label for="activity_date">Tanggal Kegiatan *</label>
+            <input type="date" id="activity_date" name="activity_date" class="form-control" value="{{ old('activity_date', optional($activity->activity_date)->format('Y-m-d')) }}" required>
+        </div>
+
+        <div class="form-group">
+            <label for="status">Status *</label>
+            <select id="status" name="status" class="form-control" required>
+                <option value="Planned" @selected(old('status', $activity->status) === 'Planned')>Planned</option>
+                <option value="Ongoing" @selected(old('status', $activity->status) === 'Ongoing')>Ongoing</option>
+                <option value="Done" @selected(old('status', $activity->status) === 'Done')>Done</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="description">Deskripsi</label>
+            <textarea id="description" name="description" class="form-control" rows="4">{{ old('description', $activity->description) }}</textarea>
+        </div>
+
+        <div style="margin-top: 20px;">
+            <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
+            <a href="{{ route('activities.index') }}" class="btn btn-secondary">Batal</a>
+        </div>
     </form>
-
-    <br>
-    <a href="{{ route('activities.index') }}">Kembali ke Daftar</a>
-</body>
-</html>
+@endsection

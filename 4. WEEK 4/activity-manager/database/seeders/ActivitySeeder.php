@@ -3,60 +3,69 @@
 namespace Database\Seeders;
 
 use App\Models\Activity;
+use App\Models\Category;
 use Illuminate\Database\Seeder;
 
 class ActivitySeeder extends Seeder
 {
     public function run(): void
     {
-        Activity::query()->delete();
+        $workshop = Category::where('name', 'Workshop')->first();
+        $seminar = Category::where('name', 'Seminar')->first();
+        $praktikum = Category::where('name', 'Praktikum')->first();
+        $project = Category::where('name', 'Project')->first();
+        $evaluasi = Category::where('name', 'Evaluasi')->first();
 
-        Activity::query()->insert([
+        $activities = [
             [
+                'code' => 'ACT-001',
                 'title' => 'Workshop Git Dasar',
-                'description' => 'Latihan kolaborasi repository.',
+                'description' => 'Latihan kolaborasi repository dan branching workflow.',
                 'activity_date' => '2026-10-05',
-                'category' => 'Workshop',
+                'category_id' => $workshop?->id,
                 'status' => 'Planned',
-                'created_at' => now(),
-                'updated_at' => now(),
             ],
             [
-                'title' => 'Seminar Web Quality',
+                'code' => 'ACT-002',
+                'title' => 'Seminar Web Quality & Testing',
                 'description' => 'Pengenalan maintainability dan testing.',
                 'activity_date' => '2026-10-12',
-                'category' => 'Seminar',
+                'category_id' => $seminar?->id,
                 'status' => 'Planned',
-                'created_at' => now(),
-                'updated_at' => now(),
             ],
             [
-                'title' => 'Praktikum Laravel',
-                'description' => 'Praktik membuat aplikasi menggunakan Laravel.',
+                'code' => 'ACT-003',
+                'title' => 'Praktikum Laravel 13 Relasi',
+                'description' => 'Praktik implementasi Eloquent Relationship dan Clean Architecture.',
                 'activity_date' => '2026-10-19',
-                'category' => 'Praktikum',
+                'category_id' => $praktikum?->id,
                 'status' => 'Ongoing',
-                'created_at' => now(),
-                'updated_at' => now(),
             ],
             [
-                'title' => 'Presentasi Project',
-                'description' => 'Presentasi hasil project pemrograman web.',
+                'code' => 'ACT-004',
+                'title' => 'Presentasi Progress Proyek Web',
+                'description' => 'Presentasi kemajuan proyek pemrograman web per kelompok.',
                 'activity_date' => '2026-10-26',
-                'category' => 'Project',
+                'category_id' => $project?->id,
                 'status' => 'Done',
-                'created_at' => now(),
-                'updated_at' => now(),
             ],
             [
-                'title' => 'Evaluasi Project',
-                'description' => 'Evaluasi hasil pengerjaan project.',
+                'code' => 'ACT-005',
+                'title' => 'Evaluasi Akhir Modul 3',
+                'description' => 'Evaluasi hasil pengerjaan modul.',
                 'activity_date' => '2026-10-30',
-                'category' => 'Evaluasi',
+                'category_id' => $evaluasi?->id,
                 'status' => 'Done',
-                'created_at' => now(),
-                'updated_at' => now(),
             ],
-        ]);
+        ];
+
+        foreach ($activities as $data) {
+            if ($data['category_id']) {
+                Activity::firstOrCreate(
+                    ['code' => $data['code']],
+                    $data
+                );
+            }
+        }
     }
 }

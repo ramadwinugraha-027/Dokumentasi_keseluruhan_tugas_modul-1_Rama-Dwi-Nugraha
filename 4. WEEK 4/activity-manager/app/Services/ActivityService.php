@@ -3,38 +3,43 @@
 namespace App\Services;
 
 use App\Models\Activity;
-use DomainException;
+use Illuminate\Database\Eloquent\Collection;
 
 class ActivityService
 {
-    private const ALLOWED_TRANSITIONS = [
-        'Planned' => ['Planned', 'Ongoing'],
-        'Ongoing' => ['Ongoing', 'Done'],
-        'Done' => ['Done'],
-    ];
+    /**
+     * Mengambil semua kegiatan beserta data kategorinya.
+     */
+    public function getAll(): Collection
+    {
+        return Activity::with('category')
+            ->orderBy('activity_date', 'asc')
+            ->get();
+    }
 
+    /**
+     * Membuat kegiatan baru.
+     */
     public function create(array $data): Activity
     {
         return Activity::create($data);
     }
 
+    /**
+     * Memperbarui data kegiatan.
+     */
     public function update(Activity $activity, array $data): Activity
     {
-        $nextStatus = $data['status'] ?? $activity->status;
-
-        $this->ensureValidTransition($activity->status, $nextStatus);
-
         $activity->update($data);
 
         return $activity->refresh();
     }
 
-    private function ensureValidTransition(string $currentStatus, string $nextStatus): void
+    /**
+     * Menghapus kegiatan.
+     */
+    public function delete(Activity $activity): bool
     {
-        $allowedNextStatuses = self::ALLOWED_TRANSITIONS[$currentStatus] ?? [];
-
-        if (! in_array($nextStatus, $allowedNextStatuses, true)) {
-            throw new DomainException("Status tidak boleh mundur dari {$currentStatus} ke {$nextStatus}.");
-        }
+        return (bool) $activity->delete();
     }
 }
