@@ -7,7 +7,9 @@ use App\Http\Requests\UpdateActivityRequest;
 use App\Models\Activity;
 use App\Models\Category;
 use App\Services\ActivityService;
+use DomainException;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 use Illuminate\View\View;
 
 class ActivityController extends Controller
@@ -19,19 +21,15 @@ class ActivityController extends Controller
         $this->activityService = $activityService;
     }
 
-    /**
-     * Menampilkan daftar kegiatan dengan relasi kategori.
-     */
-    public function index(): View
+    public function index(Request $request): View
     {
-        $activities = $this->activityService->getAll();
+        $filters = $request->only(['search', 'category_id', 'status', 'sort']);
+        $activities = $this->activityService->getAll($filters, 10);
+        $categories = Category::orderBy('name')->get();
 
-        return view('activities.index', compact('activities'));
+        return view('activities.index', compact('activities', 'categories', 'filters'));
     }
 
-    /**
-     * Menampilkan form tambah kegiatan dengan data kategori dari DB.
-     */
     public function create(): View
     {
         $categories = Category::orderBy('name')->get();
@@ -39,15 +37,12 @@ class ActivityController extends Controller
         return view('activities.create', compact('categories'));
     }
 
-    /**
-     * Menyimpan kegiatan baru.
-     */
     public function store(StoreActivityRequest $request): RedirectResponse
     {
         $activity = $this->activityService->create($request->validated());
 
         return to_route('activities.show', $activity)
-            ->with('success', 'Kegiatan berhasil dibuat.');
+            ->with('success', 'Kegiatan berhasil dibuat dengan status draft.');
     }
 
     public function show(Activity $activity): View
@@ -78,5 +73,27 @@ class ActivityController extends Controller
 
         return to_route('activities.index')
             ->with('success', 'Kegiatan berhasil dihapus.');
+    }
+
+    public function publish(Activity $activity): RedirectResponse
+    {
+        try {
+            $this->activityService->publish($activity);
+
+            return back()->with('success', "Kegiatan '{$activity->title}' berhasil dipublikasikan.");
+        } catch (DomainException $e) {
+            return back()->with('error', $e->getMessage());
+        }
+    }
+
+    public function complete(Activity $activity): RedirectResponse
+    {
+        try {
+            $this->activityService->complete($activity);
+
+            return back()->with('success', "Kegiatan '{$activity->title}' telah diselesaikan.");
+        } catch (DomainException $e) {
+            return back()->with('error', $e->getMessage());
+        }
     }
 }

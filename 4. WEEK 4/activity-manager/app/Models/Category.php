@@ -16,12 +16,10 @@ class Category extends Model
         'description',
     ];
 
-
     public function activities(): HasMany
     {
         return $this->hasMany(Activity::class);
     }
-
 
     protected static function booted(): void
     {

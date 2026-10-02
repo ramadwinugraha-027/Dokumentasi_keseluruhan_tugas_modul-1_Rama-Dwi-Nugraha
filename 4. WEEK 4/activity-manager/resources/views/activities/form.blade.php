@@ -1,18 +1,7 @@
 <div class="form-group">
-    <label for="status">Status</label>
-    <select id="status" name="status">
-        {{-- Jika status saat ini sudah 'Done', sembunyikan atau batasi opsi Planned --}}
-        @if (isset($activity) && $activity->status === 'Done')
-            <option value="Done" selected>Done</option>
-        @else
-            @foreach (['Planned', 'Ongoing', 'Done'] as $statusOption)
-                <option value="{{ $statusOption }}" @selected(old('status', $activity->status ?? 'Planned') === $statusOption)>
-                    {{ $statusOption }}
-                </option>
-            @endforeach
-        @endif
-    </select>
-    @error('status')
+    <label for="title">Judul Kegiatan *</label>
+    <input type="text" id="title" name="title" class="form-control" value="{{ old('title', $activity->title ?? '') }}" required>
+    @error('title')
         <div class="text-error">{{ $message }}</div>
     @enderror
 </div>

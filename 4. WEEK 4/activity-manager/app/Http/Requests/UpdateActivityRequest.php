@@ -21,12 +21,11 @@ class UpdateActivityRequest extends FormRequest
                 'required',
                 'string',
                 'max:20',
-                Rule::unique('activities', 'code')->ignore($activity), // Poin 5: ignore self saat update
+                Rule::unique('activities', 'code')->ignore($activity),
             ],
-            'category_id' => ['required', 'integer', 'exists:categories,id'], // Poin 5: exists untuk category_id
+            'category_id' => ['required', 'integer', 'exists:categories,id'],
             'title' => ['required', 'string', 'min:5', 'max:100'],
             'activity_date' => ['required', 'date'],
-            'status' => ['required', Rule::in(['Planned', 'Ongoing', 'Done'])],
             'description' => ['nullable', 'string', 'max:1000'],
         ];
     }
@@ -41,7 +40,6 @@ class UpdateActivityRequest extends FormRequest
             'title.required' => 'Judul kegiatan wajib diisi.',
             'title.min' => 'Judul kegiatan minimal 5 karakter.',
             'activity_date.required' => 'Tanggal kegiatan wajib diisi.',
-            'status.required' => 'Status kegiatan wajib dipilih.',
         ];
     }
 }

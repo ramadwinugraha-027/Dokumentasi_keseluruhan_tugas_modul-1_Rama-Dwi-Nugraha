@@ -46,15 +46,6 @@
         </div>
 
         <div class="form-group">
-            <label for="status">Status *</label>
-            <select id="status" name="status" class="form-control" required>
-                <option value="Planned" @selected(old('status', $activity->status) === 'Planned')>Planned</option>
-                <option value="Ongoing" @selected(old('status', $activity->status) === 'Ongoing')>Ongoing</option>
-                <option value="Done" @selected(old('status', $activity->status) === 'Done')>Done</option>
-            </select>
-        </div>
-
-        <div class="form-group">
             <label for="description">Deskripsi</label>
             <textarea id="description" name="description" class="form-control" rows="4">{{ old('description', $activity->description) }}</textarea>
         </div>
