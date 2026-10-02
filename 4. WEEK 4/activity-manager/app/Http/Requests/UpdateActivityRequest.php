@@ -2,16 +2,10 @@
 
 namespace App\Http\Requests;
 
-use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
-class UpdateActivityRequest extends FormRequest
+class UpdateActivityRequest extends StoreActivityRequest
 {
-    public function authorize(): bool
-    {
-        return true;
-    }
-
     public function rules(): array
     {
         $activity = $this->route('activity');
@@ -28,22 +22,6 @@ class UpdateActivityRequest extends FormRequest
             'activity_date' => ['required', 'date'],
             'description' => ['nullable', 'string', 'max:1000'],
             'poster' => ['nullable', 'image', 'mimes:jpeg,png,jpg,webp', 'max:2048'],
-        ];
-    }
-
-    public function messages(): array
-    {
-        return [
-            'code.required' => 'Kode kegiatan wajib diisi.',
-            'code.unique' => 'Kode kegiatan sudah digunakan oleh kegiatan lain.',
-            'category_id.required' => 'Kategori kegiatan wajib dipilih.',
-            'category_id.exists' => 'Kategori yang dipilih tidak valid atau tidak ditemukan.',
-            'title.required' => 'Judul kegiatan wajib diisi.',
-            'title.min' => 'Judul kegiatan minimal 5 karakter.',
-            'activity_date.required' => 'Tanggal kegiatan wajib diisi.',
-            'poster.image' => 'File poster harus berupa gambar.',
-            'poster.mimes' => 'Format file poster harus berupa jpeg, png, jpg, atau webp.',
-            'poster.max' => 'Ukuran file poster maksimal 2 MB.',
         ];
     }
 }
